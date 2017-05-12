@@ -1,0 +1,30 @@
+.topics-list {
+
+    .am-list-content {
+        font-size: 30px;
+    }
+    .am-list-thumb {
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+        }
+    }
+    .am-list-item {
+        .am-list-line {
+            .am-list-content {
+                font-size: 30px;
+            }
+            .am-list-extra {
+                font-size: 25px;
+                flex-basis: 30%;
+            }
+        }    
+    }
+    .top {
+        color: red;
+    }
+    .good {
+        color: blue;
+    }
+}
