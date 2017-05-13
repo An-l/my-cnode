@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {fetchArticle} from '../actions'
 import Header from '../components/Article/Header';
 import Content from '../components/Article/Content';
+import Comment from '../components/Article/Comment';
 
 class Article extends Component {
     
@@ -21,6 +22,7 @@ class Article extends Component {
             <div className='article'>
                 <Header />
                 {Object.keys(article).length!==0 && <Content article={article}/>}
+                {Object.keys(article).length!==0 && <Comment article={article}/>}
             </div>
         );
     }
