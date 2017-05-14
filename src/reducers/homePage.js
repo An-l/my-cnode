@@ -1,13 +1,8 @@
 import {
-  SELECT_TAB, RECORD_SCROLLT,
-  REQUEST_TOPICS, RECEIVE_TOPICS
+  SELECT_TAB, 
+  REQUEST_TOPICS, 
+  RECEIVE_TOPICS
 } from '../actions'
-
-let initState = {
-    selectedTab: 'all',
-    tabData: {}
-}
-
 
 const selectedTab = (tab, action) => {
     switch (action.type) {
@@ -28,6 +23,7 @@ function tabDataItem (state = {isFetching:false,page:0,topics:[]}, action) {
       }
     case RECEIVE_TOPICS:
       if(state.page < action.page){
+        // 说明不是第一次加载topics列表， 在执行滚动加载
         let topics = state.topics
         action.topics = topics.concat(action.topics)
       }
@@ -47,7 +43,6 @@ const tabData = (state = { }, action) => {
   switch (action.type) {
     case RECEIVE_TOPICS:
     case REQUEST_TOPICS:
-    case RECORD_SCROLLT:
       return {
         ...state,
         [action.tab]: tabDataItem(state[action.tab], action)
@@ -57,7 +52,7 @@ const tabData = (state = { }, action) => {
   }
 }
 
-const homePage = (state=initState, action) => {
+const homePage = (state={selectedTab: 'all', tabData: {}}, action) => {
     if(state) {
         const sTab = selectedTab(state.selectedTab, action);
         const tData = tabData(state.tabData, action);

@@ -43,10 +43,11 @@ class HomePage extends Component {
 
     componentDidMount() {
         const {selectedTab, page, dispatch} = this.props;
-        if (page ===0) {
+        if (page === 0) {
             dispatch(fetchTopics(selectedTab));
         }
 
+        // 滚动加载
         let topicsList = document.getElementsByClassName('am-tabs-tabpane');
         for (let i = 0; i < topicsList.length; i++) {
             let that = this;
@@ -70,7 +71,7 @@ class HomePage extends Component {
 
     componentWillReceiveProps(nextProps) {
         const {topics,isFetching,selectedTab,dispatch} = nextProps;
-        // 如果没在Fetching并且topics列表为空， 则去fetch列表
+        // 如果没在Fetching并且topics列表为空， 则去加载主题列表
         if(!isFetching && topics.length === 0){
             dispatch(fetchTopics(selectedTab));
         }
@@ -117,9 +118,9 @@ const mapStateToProps = (state) => {
     const {homePage, login, profile} = state;
     const {selectedTab,tabData} = homePage;
     
+    // 如果当前选择的tab未加载数据，则初始化它
     const {isFetching,page,topics} = tabData[selectedTab] || {isFetching:false, page:0, topics:[]}
     return {isFetching, page, topics, selectedTab, tabData, login, profile}
-    // return {selectedTab,tabData}
 }
 
 export default connect(mapStateToProps)(HomePage);

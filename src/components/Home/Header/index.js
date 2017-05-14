@@ -31,7 +31,7 @@ class Header extends Component {
                 </Button>
                 <div style={{paddingTop: 50}}>
                     <Link className='btn am-button' to={`profile/${login.userName}`}>个人主页</Link>
-                    <Button className="btn">消息</Button>
+                    <Link className='btn am-button' to='message'>消息</Link>
                     <Button className="btn">发表文章</Button>
                 </div>
             </div>) 

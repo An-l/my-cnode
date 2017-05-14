@@ -18,6 +18,8 @@ export const RECEIVE_PROFILE = 'RECEIVE_PROFILE'
 
 export const GET_COLLECTED_TOPICS = 'GET_COLLECTED_TOPICS'
 
+export const FETCH_MESSAGE = 'FETCH_MESSAGE'
+
 // export const SELECT_PAGE= 'SELECT_PAGE'
 
 
@@ -140,5 +142,18 @@ export const fetchAccess = accessToken => {
                 dispatch(loginFailed(json.error_msg));
             }
         })
+    }
+}
+
+// message
+export const fetchMessage = (accesstoken) => {
+    return dispatch => {
+        fetch(`https://cnodejs.org/api/v1/messages?accesstoken=${accesstoken}`)
+            .then(res => res.json())
+            .then(json => dispatch({
+                type: FETCH_MESSAGE,
+                hasReadMessage: json.data.has_read_messages,
+                hasNotReadMessage: json.data.hasnot_read_messages
+            }))
     }
 }

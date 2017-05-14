@@ -6,12 +6,14 @@ import homePage from './homePage';
 import article from './article';
 import profile from './profile';
 import login from './login';
+import message from './message';
 
 const reducers = combineReducers({
     homePage,
     article,
     login,
-    profile
+    profile,
+    message
     // selectedPage,//切换的TabBar
     // selectedTabs: tabs,//切换的TabBar
     // homeListObj: homeListReducer,//主页列表对象

@@ -5,9 +5,9 @@ import './styles.scss';
 
 class myTabs extends Component {
     
-
     handleChange(key) {
-        this.props.onClick(this.props.tabs[key].filter);
+        let {onClick} = this.props;
+        onClick && onClick(this.props.tabs[key].filter);
     }
 
     render() {

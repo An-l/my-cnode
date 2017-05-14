@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import { fetchAccess, fetchProfile } from '../actions';
+import { fetchAccess, fetchProfile, fetchMessage } from '../actions';
 
 
 class App extends Component {
@@ -12,7 +12,8 @@ class App extends Component {
         // 页面加载时进行的数据加载
         const LoadingAction = (accessToken, loginName) => {
             dispatch(fetchAccess(accessToken)) //根据accessToken进行登录验证
-            dispatch(fetchProfile(loginName));
+            dispatch(fetchProfile(loginName)); //根据loginName获取用户信息
+            dispatch(fetchMessage(accessToken)); //根据accessToken获取用户已读和未读信息
         }
 
         // 默认登录
