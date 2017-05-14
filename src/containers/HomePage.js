@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 // import { Tabs, WhiteSpace } from 'antd-mobile';
-import {selectTab, selectPage, fetchTopics} from '../actions'
+import {selectTab, selectPage, fetchTopics, logout} from '../actions'
 import Header from '../components/Home/Header';
 import Tabs from '../components/Home/Tabs';
 import List from '../components/Home/List';
@@ -70,6 +70,7 @@ class HomePage extends Component {
 
     componentWillReceiveProps(nextProps) {
         const {topics,isFetching,selectedTab,dispatch} = nextProps;
+        // 如果没在Fetching并且topics列表为空， 则去fetch列表
         if(!isFetching && topics.length === 0){
             dispatch(fetchTopics(selectedTab));
         }
@@ -80,10 +81,10 @@ class HomePage extends Component {
         const {selectedTab,dispatch} = this.props;
         dispatch(selectTab(tab)) //换切tab
     }
-    handleTabBarClick(tab) {
-        debugger
-        const {selectedPage,dispatch} = this.props;
-        dispatch(selectPage(tab)) //换切page
+    hanleLogout() {
+        const {dispatch} = this.props;
+        dispatch(logout());
+        window.localStorage.removeItem('cnodeInfo')
     }
 
     _loadMore() {
@@ -95,10 +96,13 @@ class HomePage extends Component {
     }
     
     render() {
-        const {topics, selectedPage} = this.props;
+        let {topics, selectedPage, profile, login} = this.props;
+        if (login.loginName !== profile.loginname && window.localStorage.getItem('userProfile')) {
+            profile = JSON.parse(window.localStorage.getItem('userProfile'))
+        }
         return (
             <div className='home'>
-                <Header />
+                <Header profile={profile} login={login} onLogout={this.hanleLogout.bind(this)}/>
                 <Tabs 
                     tabs={tabs}
                     onClick={this.handleTabsClick.bind(this)}>
@@ -110,11 +114,11 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const {homePage, selectedPage} = state;
+    const {homePage, login, profile} = state;
     const {selectedTab,tabData} = homePage;
     
     const {isFetching,page,topics} = tabData[selectedTab] || {isFetching:false, page:0, topics:[]}
-    return {selectedPage, isFetching, page, topics, selectedTab, tabData}
+    return {isFetching, page, topics, selectedTab, tabData, login, profile}
     // return {selectedTab,tabData}
 }
 

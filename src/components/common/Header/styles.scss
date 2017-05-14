@@ -1,9 +1,8 @@
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    color: #fff;
-    font-size: 35px;
-    background-color: #247BA0;
+.header .am-navbar {
+    color: inherit;
+    background-color: inherit;
+
+    .am-navbar-title {
+        color: inherit;
+    }
 }

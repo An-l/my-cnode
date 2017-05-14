@@ -1,0 +1,43 @@
+.user-info {
+    padding-top: 150px;
+    text-align: center;
+
+    img {
+        width: 160px;
+        height: 160px;
+        border-radius: 20px;
+    }
+    .username {
+        margin-top: 0;
+    }
+}
+.topics-box {
+    width: 80%;
+    margin: 50px auto;
+    border: 2px solid #ccc;
+    box-shadow: 1px 1px 1px #ccc;
+    text-align: center;
+
+    .am-list-header {
+        font-size: 34px;
+    }
+    .am-list-item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ddd;
+        &:last-child {
+            border-bottom: none;
+        }
+        .am-list-thumb img{
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+        }
+        .am-list-content {
+            font-size: 32px;
+        }
+    }
+    .am-list-body div:not(:last-child) .am-list-line:after {
+        border-bottom:none;
+    }
+}

@@ -4,10 +4,14 @@ import {combineReducers} from 'redux';
 // import { tabs } from './tabs';
 import homePage from './homePage';
 import article from './article';
+import profile from './profile';
+import login from './login';
 
 const reducers = combineReducers({
     homePage,
     article,
+    login,
+    profile
     // selectedPage,//切换的TabBar
     // selectedTabs: tabs,//切换的TabBar
     // homeListObj: homeListReducer,//主页列表对象

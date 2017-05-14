@@ -14,7 +14,7 @@ class Comment extends Component {
                 <div className="comment-list">
                 {
                     replies.map(reply => (
-                        <div className='comment-item'>
+                        <div className='comment-item' key={reply.id}>
                             <img className='comment-img' src= {reply.author.avatar_url}/>
                             <div className='comment-info'>
                                 <span>{reply.author.loginname}</span>

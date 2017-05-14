@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import './styles.scss';
+import { NavBar, Icon } from 'antd-mobile';
+import './styles.scss'
 
 class Header extends Component {
     render() {
+        let {title} = this.props;
         return (
-            <header className='header'>
-                首页
-            </header>
+            <div className='header'>
+                <NavBar leftContent="back" mode="light" 
+                onLeftClick={() => window.history.go(-1)}>
+                    {title}
+                </NavBar>
+            </div>
         );
     }
 }
