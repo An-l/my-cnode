@@ -88,9 +88,9 @@ const receiveProfile = (userName, profile) => ({
     profile
 })
 // 获取用户收藏的主题
-const getCollectedTopics = (userName) => {
+export const getCollectedTopics = (loginName) => {
     return dispatch => {
-        fetch(`https://cnodejs.org/api/v1/topic_collect/${userName}`)
+        fetch(`https://cnodejs.org/api/v1/topic_collect/${loginName}`)
             .then(res => res.json())
             .then(json => dispatch({
                 type: GET_COLLECTED_TOPICS,
@@ -146,9 +146,9 @@ export const fetchAccess = accessToken => {
 }
 
 // message
-export const fetchMessage = (accesstoken) => {
+export const fetchMessage = (accessToken) => {
     return dispatch => {
-        fetch(`https://cnodejs.org/api/v1/messages?accesstoken=${accesstoken}`)
+        fetch(`https://cnodejs.org/api/v1/messages?accesstoken=${accessToken}`)
             .then(res => res.json())
             .then(json => dispatch({
                 type: FETCH_MESSAGE,
@@ -156,4 +156,30 @@ export const fetchMessage = (accesstoken) => {
                 hasNotReadMessage: json.data.hasnot_read_messages
             }))
     }
+}
+
+// collect
+export const collectTopic = (accessToken, topicId) => {
+    return (
+        fetch(`https://cnodejs.org/api/v1/topic_collect/collect`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `accesstoken=${accessToken}&topic_id=${topicId}`
+        })
+            .then(res => res.json())
+    )
+}
+export const deCollectTopic = (accessToken, topicId) => {
+    return (
+        fetch(`https://cnodejs.org/api/v1/topic_collect/de_collect`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `accesstoken=${accessToken}&topic_id=${topicId}`
+        })
+            .then(res => res.json())
+    )
 }

@@ -15,6 +15,9 @@
             margin-left: 5px;
             width: 27px;
             vertical-align: middle;
+            &.is-collected {
+                color: red;
+            }
         }
 
         .createdAt,

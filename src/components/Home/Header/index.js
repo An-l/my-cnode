@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Drawer, List, NavBar, Button } from 'antd-mobile';
+import { Drawer, List, NavBar, Button, Icon, Badge } from 'antd-mobile';
 import ProfileComponent from '../../common/Profile';
 import './styles.scss';
 
@@ -30,7 +30,7 @@ class Header extends Component {
                     注销登录
                 </Button>
                 <div style={{paddingTop: 50}}>
-                    <Link className='btn am-button' to={`profile/${login.userName}`}>个人主页</Link>
+                    <Link className='btn am-button' to={`profile/${login.loginName}`}>个人主页</Link>
                     <Link className='btn am-button' to='message'>消息</Link>
                     <Button className="btn">发表文章</Button>
                 </div>
@@ -56,6 +56,13 @@ class Header extends Component {
                 <NavBar
                 className='header' 
                 iconName="ellipsis" 
+                rightContent={[
+                    <Link to='message'>
+                        <Badge dot>
+                            <Icon type={require('../../../images/remind.svg')}/>
+                        </Badge>
+                    </Link>
+                ]}
                 onLeftClick={this.onOpenChange}>
                     首页
                 </NavBar>

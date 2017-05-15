@@ -5,7 +5,8 @@ import './styles.scss'
 
 class Content extends Component {
     render() {
-        let {article} = this.props;
+        let {article, isCollected, onCollectClick} = this.props;
+        let classCollected = isCollected ? 'is-collected' : '';
         return (
             <div className='article-main'>
                 <div className='article-author'>
@@ -17,7 +18,12 @@ class Content extends Component {
                         <span className='createdAt'>发表于{article.create_at.slice(0,10)}</span>
                     </div>
                     <div className='article-info'>
-                        <span>收藏<Icon type="check-circle-o" size="md" color="" /></span>
+                        <span>收藏
+                            <Icon 
+                                className={classCollected} 
+                                type={require('../../../images/favorites-filling.svg')}
+                                onClick={() => onCollectClick()}/>
+                        </span>
                         <span className='reply_count'>回复：{article.reply_count} 浏览：{article.visit_count}</span>
                     </div>
                 </div>
