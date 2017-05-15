@@ -8,22 +8,12 @@ body{
 }
 
 
-// .app-container {
-//     position: fixed;
-//     width: 100%;
-//     top: 0;
-//     bottom: 100px;
-//     // background-color: #B2DBBF;
-// }
+.fade-in{
+	animation: fadeIn 0.5s ease-out;
+}
 
-
-// .header {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     height: 80px;
-//     color: #fff;
-//     font-size: 35px;
-//     background-color: #247BA0;
-// }
+@keyframes fadeIn{
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
 

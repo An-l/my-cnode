@@ -56,7 +56,7 @@ class HomePage extends Component {
                 let contentH = topicsList[i].scrollHeight;
                 let scrollT = topicsList[i].scrollTop;
                 
-                if (windowH + scrollT + 80 > contentH) {  
+                if (windowH + scrollT - 150 > contentH) {  
                     that._loadMore()
                 }
             };
@@ -102,7 +102,7 @@ class HomePage extends Component {
             profile = JSON.parse(window.localStorage.getItem('userProfile'))
         }
         return (
-            <div className='home'>
+            <div className='home fade-in'>
                 <Header profile={profile} login={login} onLogout={this.hanleLogout.bind(this)}/>
                 <Tabs 
                     tabs={tabs}

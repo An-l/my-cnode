@@ -4,6 +4,7 @@ import {fetchArticle, collectTopic, deCollectTopic, getCollectedTopics } from '.
 import Header from '../components/Article/Header';
 import Content from '../components/Article/Content';
 import Comment from '../components/Article/Comment';
+import Loading from '../components/common/Loading';
 
 class Article extends Component {
     constructor(props) {
@@ -77,19 +78,28 @@ class Article extends Component {
     }
     
     render() {
-        let {article, login} = this.props;
+        let {article, login, isFetching} = this.props;
         let profile = '';
         
-        return (
-            <div className='article'>
-                <Header />
-                {Object.keys(article).length!==0 
-                    && <Content article={article} 
-                        isCollected={this.state.isCollected}
-                        onCollectClick={this.handleCollectClick.bind(this)} />}
-                {Object.keys(article).length!==0 && <Comment article={article} login={login}/>}
-            </div>
-        );
+        if (isFetching || !article.id) {
+            return (
+                <div className='article fade-in'>
+                    <Header />
+                    <Loading />
+                </div>
+            )
+        }else {
+            return (
+                <div className='article fade-in'>
+                    <Header />
+                    {Object.keys(article).length!==0 
+                        && <Content article={article} 
+                            isCollected={this.state.isCollected}
+                            onCollectClick={this.handleCollectClick.bind(this)} />}
+                    {Object.keys(article).length!==0 && <Comment article={article} login={login}/>}
+                </div>
+            );
+        }
     }
 }
 

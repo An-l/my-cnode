@@ -34,7 +34,7 @@ class Message extends Component {
         let messages = message[this.state.selectedTab];
 
         return (
-            <div className='message'>
+            <div className='message fade-in'>
                 <Header title='消息' />
                  <Tabs 
                     tabs={tabs}

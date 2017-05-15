@@ -18,11 +18,11 @@ class Content extends Component {
                         <span className='createdAt'>发表于{article.create_at.slice(0,10)}</span>
                     </div>
                     <div className='article-info'>
-                        <span>收藏
+                        <span onClick={() => onCollectClick()}>
+                            收藏
                             <Icon 
                                 className={classCollected} 
-                                type={require('../../../images/favorites-filling.svg')}
-                                onClick={() => onCollectClick()}/>
+                                type={require('../../../images/favorites-filling.svg')}/>
                         </span>
                         <span className='reply_count'>回复：{article.reply_count} 浏览：{article.visit_count}</span>
                     </div>

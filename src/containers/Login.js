@@ -21,7 +21,7 @@ class Login extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='login fade-in'>
                 <Header title='个人中心'/>
                 <LoginForm {...this.props}/>
             </div>

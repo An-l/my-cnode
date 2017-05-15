@@ -21,7 +21,7 @@ class Profile extends Component {
         let { profile, collectedTopics, login } = this.props;
         let title = login.loginName !== profile.loginname ? '用户详情' : '个人空间';
         return (
-            <div className='profile'>
+            <div className='profile fade-in'>
                 <Header title={title}/>
                 {
                     !profile.isFetching && <div>
