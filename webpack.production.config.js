@@ -10,22 +10,6 @@ const svgDirs = [
 ];
 
 module.exports = {
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: path.resolve(__dirname, 'public'),  //本地服务器所加载的页面所在的目录
-        host: 'localhost',
-        port: 8888,
-        historyApiFallback: true,  //不跳转
-        inline: true,  //实时刷新
-        hot: true,
-        proxy: {
-           "/api/*": {
-                target: "https://cnodejs.org",
-                secure: false
-            }
-        },
-        // compress: true, // enable gzip compression
-    },
     entry: {
         app: [
             __dirname + '/src/index.js' //唯一入口文件

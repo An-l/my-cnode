@@ -25,9 +25,9 @@ class App extends Component {
             const loginName = cnodeInfo.loginName;
             LoadingAction(accessToken, loginName)
         } else {
-            const accessToken = 'e6bdc61e-e6ec-4f75-b8ee-1d4b34309285';
-            const loginName = 'Mwangzhi';
-            LoadingAction(accessToken, loginName)
+            const accessToken = '467befde-397c-42a9-8dd4-acf9ba4097ea';
+            const loginName = 'An-l';
+            LoadingAction(accessToken, loginName);
         }
     }
     componentWillReceiveProps(nextProps) {

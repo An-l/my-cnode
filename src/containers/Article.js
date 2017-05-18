@@ -92,11 +92,11 @@ class Article extends Component {
             return (
                 <div className='article fade-in'>
                     <Header />
-                    {Object.keys(article).length!==0 
-                        && <Content article={article} 
-                            isCollected={this.state.isCollected}
-                            onCollectClick={this.handleCollectClick.bind(this)} />}
-                    {Object.keys(article).length!==0 && <Comment article={article} login={login}/>}
+                   
+                    <Content article={article} 
+                        isCollected={this.state.isCollected}
+                        onCollectClick={this.handleCollectClick.bind(this)} />}
+                    <Comment article={article} login={login}/>
                 </div>
             );
         }
